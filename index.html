@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>송진순 교수 - Portfolio</title>
+  
+  <!-- 구글 폰트 적용 (Noto Sans KR & Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #0c1e35;
+      --primary-light: #1e3a8a;
+      --accent: #2563eb;
+      --accent-glow: rgba(37, 99, 235, 0.15);
+      --emerald: #059669;
+      --bg-main: #f1f5f9;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --border-light: #e2e8f0;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow-soft: 0 10px 30px -10px rgba(12, 30, 55, 0.08);
+      --shadow-hover: 0 20px 40px -15px rgba(12, 30, 55, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans KR', sans-serif;
+      background-color: var(--bg-main);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(5, 150, 105, 0.05) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-dark);
+      line-height: 1.7;
+      padding: 50px 20px;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* Hero Header Section */
+    .hero-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      padding: 45px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      margin-bottom: 35px;
+      display: flex;
+      gap: 45px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #0c1e35 0%, #2563eb 50%, #059669 100%);
+    }
+
+    .profile-frame {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .profile-frame::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--emerald));
+      z-index: -1;
+      opacity: 0.7;
+    }
+
+    /* CSS 스타일 정의 영역 */
+    .profile-img {
+      width: 180px;
+      height: 240px;
+      border-radius: 14px;
+      display: block;
+      background-color: #e2e8f0;
+      object-fit: cover;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .profile-info {
+      flex-grow: 1;
+    }
+
+    .name-group {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .profile-name {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.8px;
+    }
+
+    .profile-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: inline-block;
+      padding: 4px 14px;
+      background: var(--accent-glow);
+      border-radius: 30px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px 24px;
+      font-size: 0.95rem;
+      background: #f8fafc;
+      padding: 22px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .info-label {
+      font-weight: 700;
+      color: var(--primary);
+      min-width: 65px;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-val {
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    /* Content Cards */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      margin-bottom: 35px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .sec-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--border-light);
+      padding-bottom: 16px;
+      margin-bottom: 28px;
+    }
+
+    .sec-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sec-title::before {
+      content: '';
+      width: 6px;
+      height: 22px;
+      background: linear-gradient(to bottom, var(--accent), var(--emerald));
+      border-radius: 4px;
+    }
+
+    .sec-en {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    /* Timeline Section */
+    .timeline-list {
+      list-style: none;
+      position: relative;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accent-glow);
+    }
+
+    .timeline-item strong {
+      display: block;
+      font-size: 1.02rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .timeline-item .period {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .timeline-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* Career Category Badge Box */
+    .career-subgroup {
+      margin-bottom: 20px;
+      background: #f8fafc;
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+
+    .career-subgroup-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-light);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .career-subgroup-title::before {
+      content: '•';
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .career-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .career-tag {
+      font-size: 0.86rem;
+      background: #ffffff;
+      color: #334155;
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-light);
+      font-weight: 500;
+    }
+
+    /* Custom Table */
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .styled-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.95rem;
+    }
+
+    .styled-table th {
+      background: #f8fafc;
+      color: var(--primary);
+      font-weight: 700;
+      padding: 16px;
+      text-align: left;
+      border-bottom: 2px solid var(--border-light);
+    }
+
+    .styled-table th:first-child { border-top-left-radius: var(--radius-md); }
+    .styled-table th:last-child { border-top-right-radius: var(--radius-md); }
+
+    .styled-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .styled-table tr:hover td {
+      background: rgba(37, 99, 235, 0.02);
+    }
+
+    .role-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-weight: 700;
+      font-size: 0.82rem;
+      border-radius: 20px;
+      border: 1px solid #bfdbfe;
+    }
+
+    /* Publication & Sub-sections */
+    .sub-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary-light);
+      margin: 30px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pub-ol {
+      padding-left: 20px;
+      font-size: 0.96rem;
+    }
+
+    .pub-ol li {
+      margin-bottom: 14px;
+      color: #334155;
+      line-height: 1.7;
+    }
+
+    .pub-ol li strong {
+      color: var(--primary);
+    }
+
+    .tag-kci {
+      font-size: 0.78rem;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 6px;
+      font-weight: 600;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* List Cards for Books & Media */
+    .styled-list {
+      list-style: none;
+    }
+
+    .styled-list-item {
+      padding: 14px 18px;
+      background: #f8fafc;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.2s ease;
+    }
+
+    .styled-list-item:hover {
+      background: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .date-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: #eff6ff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 12px;
+    }
+
+    .media-card-item {
+      padding: 12px 16px;
+      background: #f8fafc;
+      border-radius: 10px;
+      border: 1px solid var(--border-light);
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 868px) {
+      .hero-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+      }
+      .name-group {
+        justify-content: center;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+      .card {
+        padding: 25px 20px;
+      }
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Hero Header -->
+    <header class="hero-card">
+      <div class="profile-frame">
+        <!-- HTML 이미지 태그 위치 (GitHub 저장소의 profile.jpg 이미지를 불러옴) -->
+        <img src="profile.JPG" alt="송진순 교수 프로필 사진" class="profile-img">
+      </div>
+      <div class="profile-info">
+        <div class="name-group">
+          <h1 class="profile-name">송진순</h1>
+        </div>
+        <div class="profile-title">동아대학교 행정학과 조교수</div>
+        
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">소속</span>
+            <span class="info-val">동아대학교 행정학과 / 일반대학원</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">연구분야</span>
+            <span class="info-val">AI 윤리·법, AI 공공소통, AI 정책, 자치행정</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 주요 경력 및 대외 활동 -->
+    <section class="card">
+      <div class="sec-header">
+        <h2 class="sec-title">주요 경력 및 대외 활동</h2>
+        <span class="sec-en">Experience & Advisory Board</span>
+      </div>
+      
+      <ul class="timeline-list" style="margin-bottom: 25px;">
+        <li class="timeline-item">
+          <strong>동아대학교 행정학과 조교수</strong>
+          <span class="period">2021.09 - 현재</span>
+          <div class="timeline-desc">• 학부 주요 강의: 공공소통, 공직영어, 외국행정의 이해, 정보사회론</div>
+          <div class="timeline-desc">• 외국인 대학원 석,박사 전공/세미나 강의 (공공정책 세미나, 정보사회론, 열린정부, 공공소통 등)</div>
+        </li>
+        <li class="timeline-item">
+          <strong>부산광역시 시장 인수위원회 자문위원</strong>
+          <span class="period">시정 발전 자문 및 정책 입안</span>
+        <li class="timeline-item">
+          <strong>경기도평생교육진흥원 비상임이사</strong>
+          <span class="period">주요 임원 및 이사회 활동</span>
+        </li>
+        <li class="timeline-item">
+          <strong>국민체육진흥공단 ESG경영위원</strong>
+          <span class="period">2026.03 - 2029.03</span>
+        </li>
+        <li class="timeline-item">
+          <strong>부산광역시 교육청 교육위원</strong>
+          <span class="period">2026.07 - 현재</span>
+        </li>
+        <li class="timeline-item">
+          <strong>국제신문 기자</strong>
+          <span class="period">2002.02 - 2003.12</span>
+        </li>
+      </ul>
+
+      <!-- 대학원 / 교육 경력 상세 -->
+      <div class="career-subgroup">
+        <div class="career-subgroup-title">대학원 및 교육 강의 경력</div>
+        <div class="career-tags">
+          <span class="career-tag">외국인 대학원 &lt;공공정책 세미나&gt; 담당</span>
+          <span class="career-tag">외국인 대상 &lt;정보사회론&gt; 교육</span>
+          <span class="career-tag">AI 공공행정·윤리 과정 지도</span>
+        </div>
+      </div>
+
+      <!-- 학회 임원 -->
+      <div class="career-subgroup">
+        <div class="career-subgroup-title">학회 임원 활동</div>
+        <div class="career-tags">     
+          <span class="career-tag">한국민간경비학회 정보위원회 이사</span>
+         <span class="career-tag">국제인문사회연구 편집이사</span>
+         <span class="career-tag">한국행정학회 추대운영이사</span>
+         <span class="career-tag">ASIA WOMEN 편집위원</span>
+        </div>
+      </div>
+
+      <!-- 공공기관 및 지자체 위원 -->
+      <div class="career-subgroup">
+        <div class="career-subgroup-title">공공기관 및 광역·기초지자체 자문/심의/인사위원</div>
+        <div class="career-tags">
+          <span class="career-tag">부산광역시 시장 인수위원회 자문위원</span>
+          <span class="career-tag">경기도평생교육진흥원 비상임이사</span>
+          <span class="career-tag">부산 국세청 단기국세.외 채용면접위원</span>
+          <span class="career-tag">부산광역시 남구청 인사위원회 위원</span>
+          <span class="career-tag">부산시 남구 통합재정안정화기금 심의위원회 위원</span>
+          <span class="career-tag">부산광역시 청원심사위원회 위원</span>
+          <span class="career-tag">민주평화통일자문회의 자문위원</span>
+          <span class="career-tag">부산광역시 자치경찰위원회 고충심사위원</span>
+          <span class="career-tag">부산광역시 민간위탁 성과평가위원</span>
+          <span class="career-tag">부산 남구문화재단 인사위원</span>
+          <span class="career-tag">부산 남구 지방보조금관리위원회 위원</span>
+          <span class="career-tag">부산 남구 주민참여예산위원</span>
+          <span class="career-tag">부산 사하구 정보공개심의위원</span>
+          <span class="career-tag">부산 강서구의회 윤리강령자문위원</span>
+        </div>
+      </div>
+
+      <!-- 치안 및 공공기업 평가 -->
+      <div class="career-subgroup">
+        <div class="career-subgroup-title">치안·경찰 및 공공기업 평가·심사위원</div>
+        <div class="career-tags">
+          <span class="career-tag">부산지방항공청 징계위원</span>
+          <span class="career-tag">부산도시공사 임원추천위원회</span>
+          <span class="career-tag">부산경찰청 평가· 채용심사위원</span>
+          <span class="career-tag">울산경찰청 평가· 채용심사위원</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 연구 과제 및 수주 실적 -->
+    <section class="card">
+      <div class="sec-header">
+        <h2 class="sec-title">연구 과제 및 수주 실적</h2>
+        <span class="sec-en">Research Grants & Projects</span>
+      </div>
+
+      <div class="table-responsive">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th style="width: 42%;">연구과제명 (Project Title)</th>
+              <th style="width: 22%;">연구기간</th>
+              <th style="width: 20%;">지원기관</th>
+              <th style="width: 16%;">역할</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>2021 신진연구지원사업</strong></td>
+              <td>2021.09 ~ 2022.08</td>
+              <td>한국연구재단</td>
+              <td><span class="role-badge">책임연구원</span></td>
+            </tr>
+            <tr>
+              <td><strong>2021 사회적 가치지원사업</strong></td>
+              <td>2021.09 ~ 2022.08</td>
+              <td>SK재단</td>
+              <td><span class="role-badge">책임연구원</span></td>
+            </tr>
+            <tr>
+              <td><strong>2023 KOICA 민관협력 인큐베이팅 프로그램 (파라과이)</strong></td>
+              <td>2022.12 ~ 2023.08</td>
+              <td>KOICA</td>
+              <td><span class="role-badge">공동연구원</span></td>
+            </tr>
+            <tr>
+              <td><strong>2022 아르코 작가 조사-연구-비평 "박경효작가 연구"</strong></td>
+              <td>2022.08 ~ 2024.03</td>
+              <td>한국문화예술위원회</td>
+              <td><span class="role-badge">공동연구원</span></td>
+            </tr>
+            <tr>
+              <td><strong>부산위성관광계정 경제효과 분석</strong></td>
+              <td>2024.12 ~ 2025.09</td>
+              <td>부산관광공사</td>
+              <td><span class="role-badge">공동연구원</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 논문 및 저서 -->
+    <section class="card">
+      <div class="sec-header">
+        <h2 class="sec-title">논문 및 저서</h2>
+        <span class="sec-en">Publications & Books</span>
+      </div>
+
+      <h3 class="sub-title">■ 학술 논문 (Peer-Reviewed Journals)</h3>
+      <ol class="pub-ol">
+        <li><strong>AI 수사시스템에 대한 수용성과 설명가능성(XAI) 요구에 관한 실증연구 및 법제화 제언</strong> (2026.09, 《경찰법학》, 단독)</li>
+        <li><strong>The Crisis of Perceived Legitimacy of pre-service officials in AI Bureaucracy for Value-rationality</strong> (2026.07, 《International Journal of Cultural Heritage》, 단독)</li>
+        <li><strong>The Catalytic Role of AI in Intercultural Communication: Verification of the Full Mediation Effect of Cultural Transformation Among Female Asian Students</strong> (2026.01, 《OMNES》 16(1), KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>중국 국가전략 AI와 공공서비스전환: 공공소통전략과 AI 윤리적 쟁점</strong> (2025.12, 《중국학 연구》 93(1), KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>AI Act, 2024 대선그리고 허위정보에 맞서는 인간과 AI의 공공소통 검증 프로젝트</strong> (2024.09, 《지능정보연구》, KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>The Reconsideration of Neoliberal Urbanism and Public Communicative Policies from Public Housing in Sweden</strong> (2024.02, 《Studies on Humanities and Social Sciences》, KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>AI of Public Communication for the Vulnerable: A Focus on Voice-Based Chatbots and Policy Suggestions</strong> (2023.09, 《Advanced Virtual Assistants》, 해외학술지 <span class="tag-kci">단독</span>)</li>
+        <li><strong>로봇경찰의 의사결정과 법집행에 있어 윤리적 요구: 블랙박스, 편향 그리고 거버넌스적 윤리 프레임워크</strong> (2023.08, 《입법과 정책》, KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>Robot Policing, Who will be responsible for the robot police's ethical use on making decision?</strong> (2023.05, 《OMNES》, KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>Inclusive educational effectiveness through Metaverse for the disabled students and policy suggestions</strong> (2023.03, 《지능정보연구》, KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>The Implications of Providing Voice-Based Chatbots in Public Service for Digital Inclusion and Public Communication</strong> (2022.07, 《OMNES》, KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>The Introducing voice-based public services for strengthening the accessibility of the social vulnerables and open public communication</strong> (2022.06, 《지능정보연구》 28(2), KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>지역경찰의 인공지능 챗봇 도입을 통한 공공소통 증진과 신뢰도 향상 방안 연구</strong> (2022.03, 《경찰학연구》 22(1), KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>공공 소통 증진을 위한 인공지능 챗봇의 기능 강화 방안과 정책 제언</strong> (2021.04, 《입법과 정책》 13(1), KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>영어 유표적 어순의 담화화용적 기능과 영어 원어민의 인식</strong> (2018.05, 《새한영어영문학》 61(1), KCI <span class="tag-kci">단독</span>)</li>
+        <li><strong>영어 좌측주변부 고찰</strong> (2017.09, 《새한영어영문학》 60(2), KCI <span class="tag-kci">주저자</span>)</li>
+      </ol>
+
+      <h3 class="sub-title">■ 저서 및 번역서 (Books & Translations)</h3>
+      <ul class="styled-list">
+        <li class="styled-list-item">
+          <span class="date-tag">2025.05</span>
+          <div><strong>AI와 로봇경찰</strong> — 커뮤니케이션북스 (단독)</div>
+        </li>
+        <li class="styled-list-item">
+          <span class="date-tag">2022.05</span>
+          <div><strong>글로벌 비즈니스를 위한 문화 간 커뮤니케이션</strong> — 커뮤니케이션북스 (주저자/번역서)</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 언론 및 방송 활동 -->
+    <section class="card">
+      <div class="sec-header">
+        <h2 class="sec-title">언론 및 방송 활동</h2>
+        <span class="sec-en">Media & Broadcast</span>
+      </div>
+
+      <h3 class="sub-title">■ 방송 패널 (Broadcast Programs)</h3>
+      <ul class="styled-list">
+        <li class="styled-list-item"><span class="date-tag">'25.11</span> <strong>블루푸드, 부산 수산식품의 미래</strong> (시사포커스IN플러스 / 부산MBC)</li>
+        <li class="styled-list-item"><span class="date-tag">'25.11</span> <strong>시사포커스인플러스 "블루푸드, 부산 수산식품의 미래"</strong> (뉴스데스크 / 부산MBC)</li>
+        <li class="styled-list-item"><span class="date-tag">'25.04</span> <strong>"AI가 법 집행, 안심할 수 있을까"... '슬기로운 AI생활' 컨퍼런스 출범</strong></li>
+        <li class="styled-list-item"><span class="date-tag">'24.03</span> <strong>토요일에 운전면허증 따요~ 공공기관 대국민 체감형 서비스 개선</strong> (KTV 생활&정책, 국회방송 패널)</li>
+        <li class="styled-list-item"><span class="date-tag">'22.07</span> <strong>[SV Educator] 동아대학교 행정학과 송진순 교수님을 소개합니다</strong> (SK 사회적 가치연구원)</li>
+        <li class="styled-list-item"><span class="date-tag">'21.10</span> <strong>한국언론정보학회 &lt;AI 미디어 환경과 새로운 방송이념&gt; 세미나</strong></li>
+      </ul>
+
+      <h3 class="sub-title">■ 주요 신문 기사 (Press Coverage)</h3>
+      <div class="media-grid">
+        <div class="media-card-item"><span class="date-tag">'26.09</span> 부산경찰 10년간 직위해제 167건…재발 대책 필요 </div>
+        <div class="media-card-item"><span class="date-tag">'26.08</span> 부산 원도심 노후 주택에 1인 가구 밀집… 안전 '빨간불'</div> 
+        <div class="media-card-item"><span class="date-tag">'26.05</span> 제주언론학회, '제주4·3 기억의 재현' 학술 세미나</div>
+        <div class="media-card-item"><span class="date-tag">'26.04</span> [단독] 박형준 시정 홍보... 김진홍 전 부산 동구청장 '서면 경고'</div>
+        <div class="media-card-item"><span class="date-tag">'26.02</span> [단독] 세금을 썼는데 내역이 없다... 부산 기초의회, 행안부 훈령 위반</div>
+        <div class="media-card-item"><span class="date-tag">'26.01</span> 부산 뽑기방 우후죽순 작년 사행성 조장 등 불법 7배 늘어</div>
+        <div class="media-card-item"><span class="date-tag">'25.12</span> 마을버스도 술 취해 달렸다.. 음주 관리감독 여전히 사각(종합)</div>
+        <div class="media-card-item"><span class="date-tag">'25.08</span> '오물 둥둥' 어린이 물놀이장 수질관리 딜레마</div>
+        <div class="media-card-item"><span class="date-tag">'25.07</span> 1개구(해운대구) 인구보다 적은 중·동·서·영도 통합해야 대형사업 유치</div>
+        <div class="media-card-item"><span class="date-tag">'25.07</span> 주민 자율통합 이뤄낸 '청주시+청원군' '인센티브 확보' 뚜렷한 목표 있었다</div>
+        <div class="media-card-item"><span class="date-tag">'25.06</span> 최인호 "해수부 신청사, 미니 신도시급 CLUSTER로 만들어야"</div>
+        <div class="media-card-item"><span class="date-tag">'25.06</span> 얻을 것도 없는 '노쇼 사기'... 우월감 또는 사회불만 표출?</div>
+        <div class="media-card-item"><span class="date-tag">'25.03</span> 송진순 교수가 'AI와 로봇 경찰' (커뮤니케이션북스)을 발간</div>
+        <div class="media-card-item"><span class="date-tag">'24.12</span> "집회 못 가도 연대합니다" 부산서도 커피·김밥 선결제 봇물</div>
+        <div class="media-card-item"><span class="date-tag">'24.07</span> 부산서 메타버스·AI 활용 지역 언론 혁신적 뉴스 전달 방안 세미나 개최</div>
+        <div class="media-card-item"><span class="date-tag">'24.07</span> AI·디지털 접목 수업... 초등교실에 부는 바람</div>
+        <div class="media-card-item"><span class="date-tag">'24.03</span> 동아대 메타미디어연구소, 창립세미나 성황리 개최</div>
+        <div class="media-card-item"><span class="date-tag">'22.06</span> 다른 문화권 이해부족이 부른 글로벌 기업 굴욕</div>
+      </div>
+    </section>
+
+    <!-- 기고 및 사설 -->
+    <section class="card">
+      <div class="sec-header">
+        <h2 class="sec-title">기고 및 사설</h2>
+        <span class="sec-en">Op-Eds & Articles</span>
+      </div>
+
+      <ul class="styled-list">
+        <li class="styled-list-item"><span class="date-tag">'26.05</span> <strong>'사유'를 멈추면 주권도 사라진다</strong></li>
+        <li class="styled-list-item"><span class="date-tag">'26.05</span> <strong>기권은 부채다 투표의 복리효과</strong></li>
+        <li class="styled-list-item"><span class="date-tag">'26.05</span> <strong>악의 평범성을 넘어, 청년의 한 표가 일구는 '진실의 정치'</strong></li>
+        <li class="styled-list-item"><span class="date-tag">'24.03</span> <strong>갈등과 반목의 시대, 문화 간 소통 확대를</strong></li>
+        <li class="styled-list-item"><span class="date-tag">'24.03</span> <strong>악의 평범성을 넘어, 청년의 한 표가 일구는 '진실의 정치'</strong></li>
+        <li class="styled-list-item"><span class="date-tag">'23.11</span> <strong>혁신적인 대학교육 속 소통의 중요성</strong></li>
+        <li class="styled-list-item"><span class="date-tag">'23.04</span> <strong>판도라의 상자를 연 챗GPT</strong></li>
+        <li class="styled-list-item"><span class="date-tag">'23.04</span> <strong>위험 사회로의 길목에서 챗GPT</strong></li>
+        <li class="styled-list-item"><span class="date-tag">'22.05</span> <strong>공감능력 결핍이 부른 갈등 증폭의 시대</strong></li>
+        <li class="styled-list-item"><span class="date-tag">'24.07</span> <strong>인간과 생성 AI의 공공소통을 위한 윤리 부여, EU의 AI Act</strong></li>
+      </ul>
+    </section>
+
+  </div>
+
+</body>
+</html>
